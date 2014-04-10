@@ -5,19 +5,17 @@
   :source-paths ["src"]
 
   :dependencies [[org.clojure/clojure "1.5.1"]
-                 [org.clojure/clojurescript "0.0-2030"]
-                 [speclj "2.8.0"]
-                 [specljs "2.8.0"]
+                 [org.clojure/clojurescript "0.0-2202"]
+                 [speclj "3.0.2"]
                  [compojure "1.1.5"]]
 
   ;; lein-cljsbuild plugin to build a CLJS project
   :plugins [
             ;; cljsbuild plugin
-            [lein-cljsbuild "1.0.0"]
+            [lein-cljsbuild "1.0.3"]
 
             ;; speclj
-            [speclj "2.8.0"]
-            [specljs "2.8.0"]]
+            [speclj "3.0.2"]]
 
   ;; cljsbuild options configuration
   :cljsbuild {

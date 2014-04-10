@@ -1,8 +1,8 @@
 (ns vyrlynd.spec.world
-    (:require [specljs.core :as speclj]
+    (:require [speclj.core :as speclj]
               [vyrlynd.entity :as entity]
               [vyrlynd.world :as world])
-    (:require-macros [specljs.core :refer [describe it should should-not should-be-nil should==]]
+    (:require-macros [speclj.core :refer [describe it should should-not should-be-nil should=]]
                      [vyrlynd.macro :refer [defcomponent]]))
 
 (defcomponent position [x y])
@@ -24,7 +24,7 @@
                           (entity/compose-entity [(position. 5 5)]))
                     entity (:entity resp)
                     test-world (:world resp)]
-                (should== entity (world/get-entity test-world 0))))
+                (should= entity (world/get-entity test-world 0))))
 
           (it "by a non-existant id"
               (should-be-nil
@@ -37,12 +37,12 @@
                           (entity/compose-entity [(position. 5 5)]))
                     entity (:entity resp)
                     test-world (:world resp)]
-                (should==
+                (should=
                  '()
                  (world/get-with-comp test-world :aabb))))
 
           (it "when no entities exist"
-              (should==
+              (should=
                '()
                (world/get-with-comp world/base-world :aabb)))
 
@@ -52,7 +52,7 @@
                           (entity/compose-entity [(position. 5 5)]))
                     entity (:entity resp)
                     test-world (:world resp)]
-                (should==
+                (should=
                  (list entity)
                  (world/get-with-comp test-world :position))))
 
@@ -62,6 +62,6 @@
                           (entity/compose-entity [(position. 5 5)]))
                     entity (:entity resp)
                     test-world (:world (world/add-entity (:world resp) (entity/compose-entity [(aabb. 5 5)])))]
-                (should==
+                (should=
                  (list entity)
                  (world/get-with-comp test-world :position)))))
